@@ -14,9 +14,9 @@ const tva = ref(20)
 function updatePrices(value: number | null) {
   if (value != null) {
     defaultPrice.value = value
-    priceWithTVA.value = Math.round((defaultPrice.value * (1 - (tva.value / 100))) * 100) / 100
+    priceWithTVA.value = Math.round((defaultPrice.value * (1 + (tva.value / 100))) * 100) / 100
     priceWithMarge.value = Math.round((defaultPrice.value * (1 + (marge.value / 100))) * 100) / 100
-    priceWithMargeAndTVA.value = Math.round(((defaultPrice.value * (1 - (tva.value / 100))) * (1 + (marge.value / 100))) * 100) / 100
+    priceWithMargeAndTVA.value = Math.round(((defaultPrice.value * (1 + (tva.value / 100))) * (1 + (marge.value / 100))) * 100) / 100
     priceClient.value = Math.ceil(priceWithMargeAndTVA.value / 5) * 5
   }
 }
